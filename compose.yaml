@@ -1,0 +1,14 @@
+services:
+  windlens:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: "8000"
+      DECISION_CUTOFF_HOUR: "11"
+      ELEXON_CACHE_SECONDS: "300"
+      ELEXON_TIMEOUT_SECONDS: "35"
+      ELEXON_API_BASE_URL: "https://data.elexon.co.uk/bmrs/api/v1"
+    restart: unless-stopped
